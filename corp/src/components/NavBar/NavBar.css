@@ -1,0 +1,23 @@
+.nav-bar {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    padding: 1rem 2rem;
+    align-items: center;
+}
+.nav-bar h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+
+}
+.nav-bar ul {
+    display:flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.nav-bar ul li a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+}
