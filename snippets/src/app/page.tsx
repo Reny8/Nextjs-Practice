@@ -1,8 +1,23 @@
-
-export default function Home() {
+import { getAllSnippets } from "@/db";
+export default async function Home() {
+  const snippets = (await getAllSnippets()) || [];
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="home-page">
+      <div className="snippet-nav">
+        <h1>Snippets</h1>
+
+        <a href="/snippets/new">
+          <button>New</button>
+        </a>
+      </div>
+      <ul>
+        {snippets.map((snippet) => (
+          <li key={snippet.id}>
+            <h2>{snippet.title}</h2>
+            <button>View</button>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }

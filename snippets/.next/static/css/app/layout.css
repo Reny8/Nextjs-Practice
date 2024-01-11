@@ -565,10 +565,23 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-html, body, .snippet-page {
-  height: 100%;
+html, body, .snippet-page, .home-page {
+  height: -webkit-fill-available;
   background-color: #f7fafc;
   font-family: cursive;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 300;
+  color: white;
 }
 .snippet-page {
   display: flex;
@@ -592,8 +605,6 @@ html, body, .snippet-page {
 
 :is(.snippet-form) h1, button {
   text-align: center;
-  font-weight: 500;
-  font-size: 1.5rem;
 }
 .snippet-form label {
   display: flex;
@@ -616,12 +627,27 @@ html, body, .snippet-page {
 
 .snippet-form button {
   background-color: #5c6c8d;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  font-size: 1.5rem;
 }
 
 .snippet-form button:hover {
   background-color: #363f51
+}
+.home-page .snippet-nav button:hover {
+  background-color: #4e3651
+}
+
+.home-page .snippet-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+  rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+}
+.home-page .snippet-nav button {
+  background-color: #8b5c8d;
+  width: 10rem;
 }

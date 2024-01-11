@@ -18,3 +18,12 @@ export async function createSnippet(body: Snippet) {
   }
   redirect('/');
 }
+
+export async function getAllSnippets() {
+  try {
+    const snippets = await db.snippet.findMany();
+    return snippets;
+  } catch (error) {
+    console.log(error);
+  }
+}
