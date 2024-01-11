@@ -1,5 +1,14 @@
 {
-  "node": {},
+  "node": {
+    "f2523f913130ff017eb2be7b766f0b6add43a82c": {
+      "workers": {
+        "app/snippets/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Crreyes%5C%5CDesktop%5C%5CNextjs-Practice%5C%5Csnippets%5C%5Csrc%5C%5Capp%5C%5Csnippets%5C%5Cnew%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/snippets/new/page": "rsc"
+      }
+    }
+  },
   "edge": {},
-  "encryptionKey": "kjQZbW4MdxOvjVuWrE6/o6cEYQa+P0sawd4KUEBM4KA="
+  "encryptionKey": "7R3XHkclQ7BtqsYWtumtY20anVckIjLiJd7qi2eEDnc="
 }
