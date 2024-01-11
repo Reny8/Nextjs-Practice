@@ -54,13 +54,16 @@ export default function SnippetActions(props: SnippetActionsProps) {
         <div className="actions-box">
           {isEditing ? (
             <>
-              <button onClick={handleEditToggle}>Cancel</button>
-              <button onClick={handleSaveClick}>Save</button>
+              <button onClick={handleEditToggle} className="cancel">Cancel</button>
+              <button onClick={handleSaveClick} className="save">Save</button>
             </>
           ) : (
             <>
-              <button onClick={handleEditToggle}>Edit</button>
-              <button
+              <a href="/">
+                <button className="back">Back</button>
+              </a>
+              <button onClick={handleEditToggle} className="edit">Edit</button>
+              <button className="delete"
                 onClick={() => props.handleDeleteClick(props.snip?.id || 0)}
               >
                 Delete

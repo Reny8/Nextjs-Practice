@@ -574,14 +574,16 @@ body,
   font-family: cursive;
 }
 
-h1, input[name="title"] {
+h1,
+input[name="title"] {
   font-weight: 500;
   font-size: 1.5rem;
   width: 100%;
   margin-right: 1rem;
 }
 
-code, .code {
+code,
+.code {
   display: block;
   padding: 10px;
   background-color: black;
@@ -593,7 +595,6 @@ code, .code {
   height: 100%;
   margin: 1rem;
 }
-
 
 button {
   border: none;
@@ -652,7 +653,8 @@ button {
   font-size: 1.5rem;
 }
 
-.snippet-form button:hover {
+.snippet-form button:hover,
+:is(.actions-box) .save:hover, .back:hover{
   background-color: #363f51;
 }
 .home-page .snippet-nav button:hover {
@@ -673,9 +675,12 @@ button {
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
 .home-page .snippet-nav button,
+.snippets-list button {
+  background-color: #8b5c8d;
+}
+.home-page .snippet-nav button,
 .snippets-list button,
 .actions-box button {
-  background-color: #8b5c8d;
   width: 10rem;
 }
 .snippets-list button {
@@ -716,17 +721,21 @@ button {
   align-items: center;
   gap: 1rem;
 }
-
-.actions-box button:first-child {
+:is(.actions-box) .save,
+.back {
+  background-color: #5c7b8d;
+}
+.edit,
+.cancel {
   background-color: #8d8c5c;
 }
-.actions-box button:last-child {
+.delete {
   background-color: #8d5c5c;
 }
-.actions-box button:first-child:hover {
+:is(.edit, .cancel):hover {
   background-color: #515036;
 }
-.actions-box button:last-child:hover {
+.delete:hover {
   background-color: #513636;
 }
 
