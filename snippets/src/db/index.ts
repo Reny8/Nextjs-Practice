@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { redirect } from "next/navigation";
 export const db = new PrismaClient();
 
-interface Snippet {
+export interface Snippet {
   title: string;
   code: string;
 }
@@ -12,11 +12,11 @@ export async function createSnippet(body: Snippet) {
     const newSnippet = await db.snippet.create({
       data: body,
     });
-    console.log(newSnippet);
+    return newSnippet;
   } catch (error) {
     console.log(error);
   }
-  redirect('/');
+  redirect("/");
 }
 
 export async function getAllSnippets() {
@@ -26,4 +26,45 @@ export async function getAllSnippets() {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function getSnippetById(id: number) {
+  try {
+    const snippet = await db.snippet.findUnique({
+      where: {
+        id,
+      },
+    });
+    console.log(snippet);
+    return snippet;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function updateSnippet(id: number, body: Snippet) {
+  try {
+    const snippet = await db.snippet.update({
+      where: {
+        id,
+      },
+      data: body,
+    });
+    return snippet;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteSnippet(id: number) {
+  try {
+    await db.snippet.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  redirect("/");
 }

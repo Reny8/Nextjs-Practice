@@ -15,7 +15,9 @@ export default async function Home() {
           {snippets.map((snippet) => (
             <li key={snippet.id}>
               <h2>{snippet.title}</h2>
-              <button>View</button>
+              <a href={`/snippets/${snippet.id}`}>
+                <button>View</button>
+              </a>
             </li>
           ))}
         </ul>

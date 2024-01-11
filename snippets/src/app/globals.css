@@ -16,6 +16,19 @@ h1 {
   font-size: 1.5rem;
 }
 
+code {
+  display: block;
+  padding: 10px;
+  background-color: black;
+  color: #dedede;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  border-radius: 5px;
+  height: 100%;
+  margin: 1rem
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -80,9 +93,9 @@ button {
   background-color: #4e3651;
 }
 .snippets-list button:hover {
-  background-color: #485136
+  background-color: #485136;
 }
-.home-page .snippet-nav {
+.home-page .snippet-nav, .selected-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +106,8 @@ button {
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
 .home-page .snippet-nav button,
-.snippets-list button {
+.snippets-list button, 
+.actions-box button  {
   background-color: #8b5c8d;
   width: 10rem;
 }
@@ -121,9 +135,29 @@ button {
   padding: 1rem;
 }
 
-.home-page .around-list {
+.home-page .around-list, .code-display {
   height: calc(100vh - 73.3px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.actions-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.actions-box button:first-child {
+  background-color: #8d8c5c
+}
+.actions-box button:last-child {
+  background-color: #8d5c5c
+}
+.actions-box button:first-child:hover {
+  background-color: #515036
+}
+.actions-box button:last-child:hover {
+  background-color: #513636
 }
