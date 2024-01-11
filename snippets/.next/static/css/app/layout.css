@@ -623,8 +623,7 @@ button {
   background-color: white;
 }
 
-:is(.snippet-form) h1,
-button {
+.snippet-form button {
   text-align: center;
 }
 .snippet-form label {
@@ -654,7 +653,8 @@ button {
 }
 
 .snippet-form button:hover,
-:is(.actions-box) .save:hover, .back:hover{
+:is(.actions-box) .save:hover,
+.back:hover {
   background-color: #363f51;
 }
 .home-page .snippet-nav button:hover {
@@ -739,3 +739,20 @@ button {
   background-color: #513636;
 }
 
+form .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form .header button {
+  background-color: transparent !important;
+  color: black;
+  border-radius: 101px;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.8rem;
+}
