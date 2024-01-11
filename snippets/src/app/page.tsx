@@ -10,14 +10,16 @@ export default async function Home() {
           <button>New</button>
         </a>
       </div>
-      <ul>
-        {snippets.map((snippet) => (
-          <li key={snippet.id}>
-            <h2>{snippet.title}</h2>
-            <button>View</button>
-          </li>
-        ))}
-      </ul>
+      <div className="around-list">
+        <ul className="snippets-list">
+          {snippets.map((snippet) => (
+            <li key={snippet.id}>
+              <h2>{snippet.title}</h2>
+              <button>View</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

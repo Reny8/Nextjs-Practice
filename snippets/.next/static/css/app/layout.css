@@ -565,7 +565,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-html, body, .snippet-page, .home-page {
+html,
+body,
+.snippet-page,
+.home-page {
   height: -webkit-fill-available;
   background-color: #f7fafc;
   font-family: cursive;
@@ -595,15 +598,16 @@ button {
   justify-content: space-between;
   align-items: stretch;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-  rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
   padding: 1rem;
   border-radius: 3px;
   width: 700px;
   margin: 1rem;
-  background-color: white
+  background-color: white;
 }
 
-:is(.snippet-form) h1, button {
+:is(.snippet-form) h1,
+button {
   text-align: center;
 }
 .snippet-form label {
@@ -613,7 +617,9 @@ button {
   margin-bottom: 1rem;
 }
 
-:is(.snippet-form) input, textarea, button {
+:is(.snippet-form) input,
+textarea,
+button {
   border: 1px solid #b8b8b8;
   width: 100%;
   border-radius: 5px;
@@ -631,12 +637,14 @@ button {
 }
 
 .snippet-form button:hover {
-  background-color: #363f51
+  background-color: #363f51;
 }
 .home-page .snippet-nav button:hover {
-  background-color: #4e3651
+  background-color: #4e3651;
 }
-
+.snippets-list button:hover {
+  background-color: #485136
+}
 .home-page .snippet-nav {
   display: flex;
   flex-direction: row;
@@ -645,9 +653,40 @@ button {
   padding: 1rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-  rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
-.home-page .snippet-nav button {
+.home-page .snippet-nav button,
+.snippets-list button {
   background-color: #8b5c8d;
   width: 10rem;
+}
+.snippets-list button {
+  background-color: #5c8d65;
+  height: 3.5rem;
+  border-radius: 0px 2px 2px 0px;
+  border: none;
+}
+.snippets-list {
+  margin: 0rem 1rem;
+}
+.snippets-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  margin: 0.5rem 0rem;
+  border-radius: 2px;
+}
+
+.snippets-list li h2 {
+  padding: 1rem;
+}
+
+.home-page .around-list {
+  height: calc(100vh - 73.3px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
