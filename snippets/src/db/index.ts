@@ -35,7 +35,6 @@ export async function getSnippetById(id: number) {
         id,
       },
     });
-    console.log(snippet);
     return snippet;
   } catch (error) {
     console.log(error);
