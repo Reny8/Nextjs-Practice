@@ -4,7 +4,7 @@ export default async function Home() {
   return (
     <div className="home-page">
       <div className="snippet-nav">
-        <h1>Snippets</h1>
+        <h1>JavaScript Snippets</h1>
 
         <a href="/snippets/new">
           <button>New</button>

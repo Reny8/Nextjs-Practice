@@ -1,5 +1,21 @@
 {
   "node": {
+    "f2523f913130ff017eb2be7b766f0b6add43a82c": {
+      "workers": {
+        "app/snippets/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Crreyes%5C%5CDesktop%5C%5CNextjs-Practice%5C%5Csnippets%5C%5Csrc%5C%5Capp%5C%5Csnippets%5C%5Cnew%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/snippets/new/page": "rsc"
+      }
+    },
+    "ca6928018f8cf6dd2de5eedf0f4b0c47943069d6": {
+      "workers": {
+        "app/snippets/new/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Crreyes%5C%5CDesktop%5C%5CNextjs-Practice%5C%5Csnippets%5C%5Csrc%5C%5Capp%5C%5Csnippets%5C%5Cnew%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/snippets/new/page": "rsc"
+      }
+    },
     "3cc45a2118a44d1b88bc23ee71fb2abe5b467c3d": {
       "workers": {
         "app/snippets/[selected]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Crreyes%5C%5CDesktop%5C%5CNextjs-Practice%5C%5Csnippets%5C%5Csrc%5C%5Capp%5C%5Csnippets%5C%5C%5Bselected%5D%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_1%22%2C%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
@@ -18,5 +34,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "dkdJNRBuf6Lb3Sxw1/zOu/RLJlppHKHKgNPLxWphcTs="
+  "encryptionKey": "6gy7yHRPrXk+8LI1VBQ0vdIYi62T/Wvc0o8OYcpq09k="
 }

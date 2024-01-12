@@ -6,9 +6,8 @@ export default function CreateSnippetPage() {
       title: data.get("title") as string,
       code: data.get("code") as string,
     };
-    await createSnippet(body);
+    await createSnippet(body)
   }
-
   return (
     <div className="snippet-page">
       <form className="snippet-form" action={handleClick}>
@@ -18,13 +17,15 @@ export default function CreateSnippetPage() {
         </div>
         <label htmlFor="title">
           Title
-          <input type="text" name="title" />
+          <input type="text" name="title" required/>
         </label>
         <label htmlFor="code">
           Code
-          <textarea name="code" />
+          <textarea name="code" required/>
         </label>
-        <button type="submit">Save</button>
+        <button type="submit">
+          Save
+        </button>
       </form>
     </div>
   );

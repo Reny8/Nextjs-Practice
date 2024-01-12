@@ -9,10 +9,9 @@ export interface Snippet {
 
 export async function createSnippet(body: Snippet) {
   try {
-    const newSnippet = await db.snippet.create({
+    await db.snippet.create({
       data: body,
     });
-    return newSnippet;
   } catch (error) {
     console.log(error);
   }
