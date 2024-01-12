@@ -5,7 +5,8 @@
 html,
 body,
 .snippet-page,
-.home-page {
+.home-page,
+.not-found-page {
   height: -webkit-fill-available;
   background-color: #f7fafc;
   font-family: cursive;
@@ -40,13 +41,13 @@ button {
   font-weight: 300;
   color: white;
 }
-.snippet-page {
+.snippet-page, .not-found-page {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.snippet-form {
+.snippet-form, .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -60,6 +61,16 @@ button {
   background-color: white;
 }
 
+.card {
+  padding: 1rem;
+  margin: 1rem;
+  width: 20rem;
+}
+.card h1 {
+  margin-right: 0rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 .snippet-form button {
   text-align: center;
 }
@@ -84,12 +95,13 @@ button {
   height: 200px;
 }
 
-.snippet-form button {
+.snippet-form button, .card button {
   background-color: #5c6c8d;
   font-size: 1.5rem;
 }
 
 .snippet-form button:hover,
+.card button:hover,
 :is(.actions-box) .save:hover,
 .back:hover {
   background-color: #363f51;
@@ -128,6 +140,9 @@ button {
 }
 .snippets-list {
   margin: 0rem 1rem;
+  margin: 0rem 1rem;
+  overflow-y: auto;
+  height: 29rem;
 }
 .snippets-list li {
   display: flex;
@@ -183,13 +198,15 @@ form .header {
   justify-content: space-between;
 }
 
-form .header button {
-  background-color: transparent !important;
+form .header a {
   color: black;
   border-radius: 101px;
-  height: 2.5rem;
+  height: 2rem;
   width: 2.5rem;
   display: flex;
+  font-size: 1.3rem;
   align-items: center;
-  padding-bottom: 0.8rem;
+  justify-content: center;
+  padding-bottom: 0.2rem;
+  border: 1px solid #b8b8b8;
 }

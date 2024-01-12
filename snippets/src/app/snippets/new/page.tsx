@@ -14,9 +14,7 @@ export default function CreateSnippetPage() {
       <form className="snippet-form" action={handleClick}>
         <div className="header">
           <h1>Create Snippet</h1>
-          <a href="/">
-            <button>&larr;</button>
-          </a>
+          <a href="/">&larr;</a>
         </div>
         <label htmlFor="title">
           Title

@@ -8,7 +8,7 @@ interface Snippet {
   code: string;
 }
 interface SnippetActionsProps {
-  snip: Snippet | undefined | null;
+  snip: Snippet
   handleDeleteClick: (id: number) => void;
   handleEditClick: (id: number, data: { title: string; code: string }) => void;
 }
@@ -16,8 +16,8 @@ interface SnippetActionsProps {
 export default function SnippetActions(props: SnippetActionsProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedFields, setEditedFields] = useState({
-    title: props.snip?.title || "",
-    code: props.snip?.code || "",
+    title: props.snip.title,
+    code: props.snip.code,
   });
 
   const handleEditToggle = () => {
@@ -42,7 +42,7 @@ export default function SnippetActions(props: SnippetActionsProps) {
     <>
       <div className="selected-nav">
         {!isEditing ? (
-          <h1>{editedFields.title || "Not Found"}</h1>
+          <h1>{editedFields.title}</h1>
         ) : (
           <input
             type="text"
@@ -64,7 +64,7 @@ export default function SnippetActions(props: SnippetActionsProps) {
               </a>
               <button onClick={handleEditToggle} className="edit">Edit</button>
               <button className="delete"
-                onClick={() => props.handleDeleteClick(props.snip?.id || 0)}
+                onClick={() => props.handleDeleteClick(props.snip.id)}
               >
                 Delete
               </button>
@@ -74,7 +74,7 @@ export default function SnippetActions(props: SnippetActionsProps) {
       </div>
       <div className="code-display">
         {!isEditing ? (
-          <code>{editedFields.code || "Not Found"}</code>
+          <code>{editedFields.code}</code>
         ) : (
           <textarea
             className="code"
