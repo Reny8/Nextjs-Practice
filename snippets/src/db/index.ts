@@ -13,7 +13,7 @@ export async function createSnippet(body: Snippet) {
       data: body,
     });
   } catch (error) {
-    console.log(error);
+    return console.log(error)
   }
   redirect("/");
 }
@@ -23,7 +23,7 @@ export async function getAllSnippets() {
     const snippets = await db.snippet.findMany();
     return snippets;
   } catch (error) {
-    console.log(error);
+    return console.log(error)
   }
 }
 
@@ -36,7 +36,7 @@ export async function getSnippetById(id: number) {
     });
     return snippet;
   } catch (error) {
-    console.log(error);
+    return console.log(error)
   }
 }
 
@@ -50,7 +50,7 @@ export async function updateSnippet(id: number, body: Snippet) {
     });
     return snippet;
   } catch (error) {
-    console.log(error);
+    return console.log(error)
   }
 }
 
@@ -62,7 +62,7 @@ export async function deleteSnippet(id: number) {
       },
     });
   } catch (error) {
-    console.log(error);
+    return console.log(error)
   }
   redirect("/");
 }
