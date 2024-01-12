@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
+import Editor from "@monaco-editor/react";
 interface Snippet {
   id: number;
   title: string;
   code: string;
 }
 interface SnippetActionsProps {
-  snip: Snippet
+  snip: Snippet;
   handleDeleteClick: (id: number) => void;
   handleEditClick: (id: number, data: { title: string; code: string }) => void;
 }
@@ -29,13 +29,13 @@ export default function SnippetActions(props: SnippetActionsProps) {
     setIsEditing(false);
   };
 
-  const handleInputChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEditedFields((prevFields) => ({ ...prevFields, [name]: value }));
+  };
+
+  const handleEditorChange = (value: string = '') => {
+    setEditedFields((prevFields) => ({ ...prevFields, code: value }));
   };
 
   return (
@@ -54,16 +54,23 @@ export default function SnippetActions(props: SnippetActionsProps) {
         <div className="actions-box">
           {isEditing ? (
             <>
-              <button onClick={handleEditToggle} className="cancel">Cancel</button>
-              <button onClick={handleSaveClick} className="save">Save</button>
+              <button onClick={handleEditToggle} className="cancel">
+                Cancel
+              </button>
+              <button onClick={handleSaveClick} className="save">
+                Save
+              </button>
             </>
           ) : (
             <>
               <a href="/">
                 <button className="back">Back</button>
               </a>
-              <button onClick={handleEditToggle} className="edit">Edit</button>
-              <button className="delete"
+              <button onClick={handleEditToggle} className="edit">
+                Edit
+              </button>
+              <button
+                className="delete"
                 onClick={() => props.handleDeleteClick(props.snip.id)}
               >
                 Delete
@@ -76,12 +83,17 @@ export default function SnippetActions(props: SnippetActionsProps) {
         {!isEditing ? (
           <code>{editedFields.code}</code>
         ) : (
-          <textarea
+          <Editor
             className="code"
-            name="code"
-            value={editedFields.code}
-            onChange={handleInputChange}
-          ></textarea>
+            height="87vh"
+            theme="vs-dark"
+            language="javascript"
+            options={{
+              minimap: { enabled: false },
+            }}
+            defaultValue={editedFields.code}
+            onChange={handleEditorChange}
+          />
         )}
       </div>
     </>

@@ -582,21 +582,22 @@ input[name="title"] {
   width: 100%;
   margin-right: 1rem;
 }
-
-code,
-.code {
-  display: block;
-  padding: 10px;
-  background-color: black;
+code {
+  height: 100% !important;
   color: #dedede;
   font-family: "Courier New", monospace;
+  background-color: black;
+  padding: 10px;
   white-space: pre-wrap;
+  display: block;
+}
+code,
+.code {
   overflow-x: auto;
   border-radius: 5px;
-  height: 100%;
+  height: auto;
   margin: 1rem;
 }
-
 button {
   border: none;
   cursor: pointer;
@@ -604,13 +605,15 @@ button {
   font-weight: 300;
   color: white;
 }
-.snippet-page, .not-found-page {
+.snippet-page,
+.not-found-page {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.snippet-form, .card {
+.snippet-form,
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -658,7 +661,8 @@ button {
   height: 200px;
 }
 
-.snippet-form button, .card button {
+.snippet-form button,
+.card button {
   background-color: #5c6c8d;
   font-size: 1.5rem;
 }
