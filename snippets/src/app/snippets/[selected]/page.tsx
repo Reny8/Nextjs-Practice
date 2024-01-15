@@ -1,4 +1,4 @@
-import { deleteSnippet, getSnippetById, updateSnippet } from "@/db";
+import { deleteSnippet, getAllSnippets, getSnippetById, updateSnippet } from "@/db";
 import SnippetActions from "@/components/SnippetActions";
 import { notFound } from "next/navigation";
 export default async function SelectedSnippetPage({
@@ -30,4 +30,13 @@ export default async function SelectedSnippetPage({
         />
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const snippets = await getAllSnippets() || []
+  return snippets.map((snippet) => {
+    return {
+      selected: snippet.id.toString()
+    }
+  })
 }
