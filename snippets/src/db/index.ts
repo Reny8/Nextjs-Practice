@@ -50,6 +50,7 @@ export async function updateSnippet(id: number, body: Snippet) {
       },
       data: body,
     });
+    revalidatePath(`/snippets/${id}`)
     revalidatePath("/");
     return snippet;
   } catch (error) {
