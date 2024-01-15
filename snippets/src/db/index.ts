@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 export const db = new PrismaClient();
 
 export interface Snippet {
@@ -13,9 +14,9 @@ export async function createSnippet(body: Snippet) {
       data: body,
     });
   } catch (error) {
-    return console.log(error)
+    return console.log(error);
   }
-  redirect("/");
+  revalidatePath("/");
 }
 
 export async function getAllSnippets() {
@@ -23,7 +24,7 @@ export async function getAllSnippets() {
     const snippets = await db.snippet.findMany();
     return snippets;
   } catch (error) {
-    return console.log(error)
+    return console.log(error);
   }
 }
 
@@ -36,7 +37,7 @@ export async function getSnippetById(id: number) {
     });
     return snippet;
   } catch (error) {
-    return console.log(error)
+    return console.log(error);
   }
 }
 
@@ -48,9 +49,10 @@ export async function updateSnippet(id: number, body: Snippet) {
       },
       data: body,
     });
+    revalidatePath(`/snippets/${snippet.id}`);
     return snippet;
   } catch (error) {
-    return console.log(error)
+    return console.log(error);
   }
 }
 
@@ -61,8 +63,8 @@ export async function deleteSnippet(id: number) {
         id,
       },
     });
+    revalidatePath("/");
   } catch (error) {
-    return console.log(error)
+    return console.log(error);
   }
-  redirect("/");
 }
