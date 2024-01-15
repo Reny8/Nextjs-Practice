@@ -13,10 +13,11 @@ export async function createSnippet(body: Snippet) {
     await db.snippet.create({
       data: body,
     });
+    revalidatePath("/");
   } catch (error) {
     return console.log(error);
   }
-  revalidatePath("/");
+  redirect("/");
 }
 
 export async function getAllSnippets() {
@@ -49,7 +50,7 @@ export async function updateSnippet(id: number, body: Snippet) {
       },
       data: body,
     });
-    revalidatePath(`/snippets/${snippet.id}`);
+    revalidatePath("/");
     return snippet;
   } catch (error) {
     return console.log(error);
@@ -67,4 +68,5 @@ export async function deleteSnippet(id: number) {
   } catch (error) {
     return console.log(error);
   }
+  redirect("/");
 }
