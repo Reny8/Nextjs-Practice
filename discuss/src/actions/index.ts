@@ -1,13 +1,11 @@
-'use server'
+"use server";
 
-import * as auth from '@/auth'
+import * as auth from "@/auth";
 
-
-export async function signIn() {
-    return auth.signIn('github')
+// NEED TO RESOLVE SIGN OUT NOT A FUNCTION PROBLEM. WILL RETURN TO THIS LATER.
+export async function signInAction() {
+  return auth.signIn("github");
 }
-
-
-export async function signOut() {
-    return auth.signOut()
+export async function signOutAction() {
+  return auth.signOut();
 }

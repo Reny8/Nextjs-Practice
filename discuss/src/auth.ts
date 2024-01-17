@@ -12,7 +12,7 @@ if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
 }
 
 export const {
-  handlers: { GET, POST },
+  handlers,
   auth,
   signOut,
   signIn,
