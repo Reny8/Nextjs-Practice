@@ -1,14 +1,10 @@
-import { Button } from "@nextui-org/button";
-import * as actions from "@/actions";
-export default function Home() {
+import { auth } from "@/auth";
+import NavBar from "@/components/NavBar/NavBar";
+export default async function Home() {
+  const session = await auth();
   return (
     <div>
-      <form action={actions.signInAction}>
-        <Button type="submit">Sign In</Button>
-      </form>
-      <form action={actions.signOutAction}>
-        <Button type="submit">Sign Out</Button>
-      </form>
+      <NavBar auth={auth} />
     </div>
   );
 }
