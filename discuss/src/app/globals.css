@@ -3,9 +3,6 @@
 @tailwind utilities;
 html {
   scroll-behavior: smooth;
-}
-html,
- {
   height: 100%;
 }
 .page {
@@ -21,11 +18,10 @@ html,
 }
 
 .card {
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-    background-color: #fff;
-    display:flex;
-    flex-direction: column;
-    gap: 0.2rem
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
