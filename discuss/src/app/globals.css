@@ -5,13 +5,13 @@ html {
   scroll-behavior: smooth;
 }
 html,
-body,
-body > div {
+ {
   height: 100%;
 }
 .page {
-  height: calc(100% - 80px);
+  height: calc(100vh - 80px);
   background-color: #f7f7f7;
+  padding: 1rem;
 }
 
 .page:has(.center-content) {

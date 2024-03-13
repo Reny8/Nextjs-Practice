@@ -18,12 +18,16 @@ export default function NewTopic() {
       <Button onPress={onOpen} color="primary" size="lg">
         New Topic
       </Button>
-      <Modal isOpen={isOpen} onClose={onOpenChange}>
+      <Modal
+        isOpen={isOpen}
+        backdrop="blur"
+        onClose={onOpenChange}
+      >
         <ModalContent>
           <ModalHeader>New Topic</ModalHeader>
           <ModalBody>
             <Input type="text" label="Title" />
-            <Textarea  label="Description" />
+            <Textarea label="Description" />
           </ModalBody>
           <ModalFooter>
             <Button type="submit" color="primary">
