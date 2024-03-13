@@ -13,8 +13,7 @@ import { useSession } from "next-auth/react";
 
 export default function HeaderAuth() {
   const session = useSession();
-  if (session.status === "loading") return null;
-  else if (session.data?.user) {
+  if (session.data?.user) {
     return (
       <Popover placement="bottom">
         <PopoverTrigger>
@@ -35,7 +34,7 @@ export default function HeaderAuth() {
     return (
       <form action={actions.signInAction}>
         <Button type="submit" className="nav-bar-button" color="secondary">
-          Sign In
+          {session.status === "loading" ? "..." : "Sign In"}
         </Button>
       </form>
     );
