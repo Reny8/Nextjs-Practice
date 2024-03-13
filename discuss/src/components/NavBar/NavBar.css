@@ -13,16 +13,5 @@ h1 {
 .nav-bar-button {
   padding: 0.5rem;
   margin: 0.5rem 0;
-  border-radius: 4px;
   box-sizing: border-box;
-  background-color: #275379;
-  color: #fff;
-}
-
-button.avatar {
-  background-color: transparent;
-  border: none;
-  border-radius: 100%;
-  padding: 0px;
-  min-width: auto
 }
