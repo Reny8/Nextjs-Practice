@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+html,
+body,
+body > div {
+  height: 100%;
+}
+.page {
+  height: calc(100% - 80px);
+  background-color: #f7f7f7;
+}
+
+.page:has(.center-content) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    background-color: #fff;
+    display:flex;
+    flex-direction: column;
+    gap: 0.2rem
+}

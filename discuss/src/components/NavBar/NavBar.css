@@ -1,6 +1,6 @@
 nav {
   padding: 0.5rem 1rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 nav header {
   max-width: 100% !important;
