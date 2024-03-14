@@ -33,8 +33,13 @@ export default function HeaderAuth() {
   } else
     return (
       <form action={actions.signInAction}>
-        <Button type="submit" className="nav-bar-button" color="secondary">
-          {session.status === "loading" ? "..." : "Sign In"}
+        <Button
+          type="submit"
+          className="nav-bar-button"
+          color="secondary"
+          isLoading={session.status === "loading"}
+        >
+          { session.status === "loading" ? "" : "Sign In"}
         </Button>
       </form>
     );

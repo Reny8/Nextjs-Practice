@@ -1,7 +1,11 @@
-export default function TopicShowPage() {
-    return (
-        <div>
-            <h1>Topic Show Page</h1>
-        </div>
-    )
+export default function TopicShowPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  return (
+    <div className="page">
+      <h1>{params.slug}</h1>
+    </div>
+  );
 }

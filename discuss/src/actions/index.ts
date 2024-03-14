@@ -1,2 +1,7 @@
 export { signInAction, signOutAction } from "./authFunctions";
-export { createTopic, createPost, createComment } from "./functions";
+export {
+  createTopic,
+  getAllTopics,
+  createPost,
+  createComment,
+} from "./functions";

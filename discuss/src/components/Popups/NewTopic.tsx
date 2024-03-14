@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import {
   Modal,
@@ -16,6 +17,7 @@ export default function NewTopic() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const inValidTitle = title !== "" && title.length < 3;
   const inValidDescription = description !== "" && description.length < 10;
   const disabled = title.length < 3 || description.length < 10;
@@ -26,9 +28,12 @@ export default function NewTopic() {
     }
   }, [isOpen]);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (disabled) return;
     // CALL THE ENDPOINT TO CREATE A NEW TOPIC
+    setLoading(true);
+    await createTopic({ title, description });
+    setLoading(false);
     onOpenChange();
   }
   return (
@@ -68,11 +73,12 @@ export default function NewTopic() {
             </Button>
             <Button
               type="submit"
+              isLoading={loading}
               color={disabled ? "default" : "primary"}
-              disabled={disabled}
+              disabled={disabled || loading}
               onPress={handleSubmit}
             >
-              Create
+              {loading ? "" : "Create"}
             </Button>
           </ModalFooter>
         </ModalContent>
