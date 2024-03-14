@@ -16,7 +16,9 @@ export default function NewTopic() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-
+  const inValidTitle = title !== "" && title.length < 3;
+  const inValidDescription = description !== "" && description.length < 10;
+  const disabled = title.length < 3 || description.length < 10;
   React.useEffect(() => {
     if (isOpen) {
       setTitle("");
@@ -25,13 +27,13 @@ export default function NewTopic() {
   }, [isOpen]);
 
   function handleSubmit() {
-    if (title.length < 3 || description.length < 10) return;
+    if (disabled) return;
     // CALL THE ENDPOINT TO CREATE A NEW TOPIC
     onOpenChange();
   }
   return (
     <>
-      <Button onPress={onOpen} color="primary" size="lg">
+      <Button onPress={onOpen} color="primary" size="lg" className="w-full">
         New Topic
       </Button>
       <Modal isOpen={isOpen} backdrop="blur" onClose={onOpenChange}>
@@ -42,23 +44,34 @@ export default function NewTopic() {
               type="text"
               label="Title"
               value={title}
-              isInvalid={title !== "" && title.length < 3}
+              isInvalid={inValidTitle}
               onChange={(e) => setTitle(e.target.value)}
-              errorMessage="Title must be longer than 3 characters"
+              errorMessage={
+                inValidTitle ? "Title must be longer than 3 characters" : ""
+              }
             />
             <Textarea
               label="Description"
               value={description}
-              isInvalid={description !== "" && description.length < 10}
+              isInvalid={inValidDescription}
               onChange={(e) => setDescription(e.target.value)}
-              errorMessage="Description must be longer than 10 characters"
+              errorMessage={
+                inValidDescription
+                  ? "Description must be longer than 10 characters"
+                  : ""
+              }
             />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onOpenChange} color="primary" variant="bordered">
               Cancel
             </Button>
-            <Button type="submit" color="primary" onPress={handleSubmit}>
+            <Button
+              type="submit"
+              color={disabled ? "default" : "primary"}
+              disabled={disabled}
+              onPress={handleSubmit}
+            >
               Create
             </Button>
           </ModalFooter>
