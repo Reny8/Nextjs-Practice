@@ -45,6 +45,16 @@ export async function getAllTopics() {
     } catch (error) {
         return console.error(error);
     }
+
+}
+export async function deleteTopic(id: string) {
+    try {
+        await db.topic.delete({ where: { id } });
+        revalidatePath(paths.home());
+    } catch (error) {
+        return console.error(error);
+    }
+    
 }
 
 export async function createPost() {

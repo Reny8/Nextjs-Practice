@@ -23,6 +23,7 @@ html {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
+  background-color: white;
   gap: 0.2rem;
 }
 
@@ -34,10 +35,13 @@ ul {
 }
 
 li {
-  padding: 0.6rem;
+  padding: 0.8rem;
   background-color: #e6e6e6;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+li:hover {
+  opacity: 0.8
 }

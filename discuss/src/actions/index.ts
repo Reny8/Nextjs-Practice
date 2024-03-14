@@ -4,4 +4,5 @@ export {
   getAllTopics,
   createPost,
   createComment,
+  deleteTopic,
 } from "./functions";
