@@ -8,7 +8,7 @@ export default async function Profile() {
   const session = await auth();
   if (session?.user) {
     return (
-      <div className="grid grid-cols-4 gap-4 p-4 h-full">
+      <div className="grid grid-cols-4 gap-4 p-4">
         <TopPostDisplay />
         <div className="col-span-1 flex flex-col items-stretch gap-4 justify-center">
           <NewTopic />
