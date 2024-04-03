@@ -1,8 +1,7 @@
 "use server";
 import { z } from "zod";
-import type { Topic } from "@prisma/client";
+import type { Post, Topic } from "@prisma/client";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import paths from "@/path";
@@ -56,9 +55,35 @@ export async function deleteTopic(id: string) {
     }
     
 }
+export async function findTopic(slug: string) {
+    try {
+        const topic = await db.topic.findFirst({ where: { slug } });
+        return topic;
+    } catch (error) {
+        return console.error(error);
+    }
+}
 
-export async function createPost() {
-  // TODO: Revalidate the following: Topic Show Page
+export async function createPost(data: {
+  slug: string;
+  content: string;
+  userId: string;
+  topicId: string
+}) {
+  let post: Post
+  try {
+    post = await db.post.create({
+      data: {
+        slug: data.slug,
+        content: data.content,
+        userId: data.userId,
+        topicId: data.topicId
+      }
+    })
+  } catch (error) {
+    return console.error(error)
+  }
+  revalidatePath(paths.topic(data.slug))
   // Time based revalidation for Home Page
 }
 
