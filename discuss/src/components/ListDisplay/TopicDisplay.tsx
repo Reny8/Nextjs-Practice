@@ -13,8 +13,10 @@ export default async function TopicDisplay() {
         {topics.map((item) => {
           return (
             <li key={item.id}>
-              <Link href={paths.topic(item.slug)}>{item.slug}</Link>
-              <ChevronRightIcon />
+              <Link href={paths.topic(item.slug)}>
+                <div>{item.slug}</div>
+                <ChevronRightIcon />
+              </Link>
             </li>
           );
         })}
