@@ -109,3 +109,12 @@ export async function createComment() {
   // TODO: Revalidate the following: View a Post Page
   // Time based revalidation for Topic Show Page, Home Page
 }
+
+export async function getAllPost() {
+  try {
+    const posts = await db.post.findMany();
+    return posts;
+  } catch (error) {
+    return console.error(error);
+  }
+}

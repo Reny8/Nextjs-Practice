@@ -21,8 +21,11 @@ export default function NewPost({ topicId }: { topicId: string }) {
   const [formData, setFormData] = React.useState({
     slug: "",
     content: "",
-    userId: session.data?.user?.id || "",
+    userId: session.data?.user?.name || "",
     topicId: topicId,
+    user: session.data?.user?.id || "",
+    topic: topicId,
+    comments: []
   });
   // COME BACK AND WRITE CONDITIONS BELOW
   const inValidTitle = false;
@@ -36,13 +39,15 @@ export default function NewPost({ topicId }: { topicId: string }) {
         content: "",
         userId: session.data?.user?.id || "",
         topicId: topicId,
+        user: session.data?.user?.id || "",
+        topic: topicId,
+        comments: []
       });
     }
   }, [isOpen]);
 
   async function handleSubmit() {
     if (disabled) return;
-    // CALL THE ENDPOINT TO CREATE A NEW TOPIC
     setLoading(true);
     await createPost(formData);
     setLoading(false);
