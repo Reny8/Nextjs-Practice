@@ -12,14 +12,16 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { createPost } from "@/actions";
+import { useSession } from "next-auth/react";
 
 export default function NewPost({ topicId }: { topicId: string }) {
+  const session = useSession();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     slug: "",
     content: "",
-    userId: "",
+    userId: session.data?.user?.id || "",
     topicId: topicId,
   });
   // COME BACK AND WRITE CONDITIONS BELOW
@@ -32,7 +34,7 @@ export default function NewPost({ topicId }: { topicId: string }) {
       setFormData({
         slug: "",
         content: "",
-        userId: "",
+        userId: session.data?.user?.id || "",
         topicId: topicId,
       });
     }
@@ -82,13 +84,13 @@ export default function NewPost({ topicId }: { topicId: string }) {
             />
           </ModalBody>
           <ModalFooter>
-            <Button onPress={onOpenChange} color="primary" variant="bordered">
+            <Button onPress={onOpenChange} color="secondary" variant="bordered">
               Cancel
             </Button>
             <Button
               type="submit"
               isLoading={loading}
-              color={disabled ? "default" : "primary"}
+              color={disabled ? "default" : "secondary"}
               disabled={disabled || loading}
               onPress={handleSubmit}
             >

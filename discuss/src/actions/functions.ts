@@ -46,6 +46,24 @@ export async function getAllTopics() {
     }
 
 }
+export async function updateTopic(data: {
+    id: string;
+    title: string;
+    description: string;
+}) {
+    try {
+        await db.topic.update({
+            where: { id: data.id },
+            data: {
+                slug: data.title,
+                description: data.description
+            }
+        });
+      } catch (error) {
+        return console.error(error);
+      }
+  revalidatePath(paths.topic(data.title));
+}
 export async function deleteTopic(id: string) {
     try {
         await db.topic.delete({ where: { id } });
