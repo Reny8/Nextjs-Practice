@@ -26,7 +26,12 @@ html {
   background-color: white;
   gap: 0.2rem;
 }
-
+.post-subtitle-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
 ul {
   display: flex;
   flex-direction: column;

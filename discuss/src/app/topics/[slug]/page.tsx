@@ -11,9 +11,9 @@ export default async function TopicShowPage({
   return (
     <div className="page">
       <div className="grid grid-cols-4 gap-4 p-4 h-full">
-        <TopPostDisplay title={currentTopic?.slug || 'Posts'}/>
+        <TopPostDisplay title={currentTopic?.slug || 'Posts'} topicId={currentTopic?.id}/>
         <div className="col-span-1 flex flex-col items-stretch gap-4">
-          <NewPost topicId={currentTopic?.slug ? currentTopic.slug : ""}/>
+          <NewPost topicId={currentTopic?.id ? currentTopic.id : ""}/>
           <div className="card">
             <h1 className="flex items-center justify-center mb-1">Description</h1>
             <p className="m-2">{currentTopic?.description}</p>

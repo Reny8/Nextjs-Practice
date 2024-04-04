@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import paths from "@/path";
+import { user } from "@nextui-org/react";
 
 const createTopicSchema = z.object({
   title: z
@@ -86,7 +87,7 @@ export async function createPost(data: {
   slug: string;
   content: string;
   userId: string;
-  topicId: string
+  topicId: string;
 }) {
   let post: Post
   try {
@@ -95,7 +96,7 @@ export async function createPost(data: {
         slug: data.slug,
         content: data.content,
         userId: data.userId,
-        topicId: data.topicId
+        topicId: data.topicId,
       }
     })
   } catch (error) {
@@ -109,10 +110,23 @@ export async function createComment() {
   // TODO: Revalidate the following: View a Post Page
   // Time based revalidation for Topic Show Page, Home Page
 }
-
-export async function getAllPost() {
+export async function findUserName(userId: string) {
   try {
-    const posts = await db.post.findMany();
+    const user = await db.user.findFirst({ where: { id: userId } });
+    return user?.name;
+  } catch (error) {
+    return console.error(error);
+  }
+
+}
+export async function getAllPosts(title: string | undefined, topicId?: string) {
+  // Show top 4 posts based on most comments 
+  try {
+    if (!title && !topicId) {
+    const posts = await db.post.findMany()
+    return posts;
+    }
+    const posts = await db.post.findMany({ where: { topicId: topicId } })
     return posts;
   } catch (error) {
     return console.error(error);
