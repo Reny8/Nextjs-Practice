@@ -53,3 +53,19 @@ li > a {
   justify-content: space-between;
   width: 100%;
 }
+
+.add-comment-form {
+  position: relative;
+}
+.add-comment-form .add-button {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  border-radius: 100%;
+}
+
+.card.spaced-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

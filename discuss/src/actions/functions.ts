@@ -129,3 +129,13 @@ export async function getAllPosts(title: string | undefined, topicId?: string) {
     return console.error(error);
   }
 }
+
+export async function findPostAndComments(postId: string) {
+  try {
+    const post = await db.post.findFirst({ where: { id: postId } });
+    const comments = await db.comment.findMany({ where: { postId: postId } });
+    return { post, comments };
+  } catch (error) {
+    return console.error(error);
+  }
+}
