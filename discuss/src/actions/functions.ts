@@ -39,48 +39,46 @@ export async function createTopic(data: {
 }
 
 export async function getAllTopics() {
-    try {
-        const topics = await db.topic.findMany();
-        return topics;
-    } catch (error) {
-        return console.error(error);
-    }
-
+  try {
+    const topics = await db.topic.findMany();
+    return topics;
+  } catch (error) {
+    return console.error(error);
+  }
 }
 export async function updateTopic(data: {
-    id: string;
-    title: string;
-    description: string;
+  id: string;
+  title: string;
+  description: string;
 }) {
-    try {
-        await db.topic.update({
-            where: { id: data.id },
-            data: {
-                slug: data.title,
-                description: data.description
-            }
-        });
-      } catch (error) {
-        return console.error(error);
-      }
+  try {
+    await db.topic.update({
+      where: { id: data.id },
+      data: {
+        slug: data.title,
+        description: data.description,
+      },
+    });
+  } catch (error) {
+    return console.error(error);
+  }
   revalidatePath(paths.topic(data.title));
 }
 export async function deleteTopic(id: string) {
-    try {
-        await db.topic.delete({ where: { id } });
-        revalidatePath(paths.home());
-    } catch (error) {
-        return console.error(error);
-    }
-    
+  try {
+    await db.topic.delete({ where: { id } });
+    revalidatePath(paths.home());
+  } catch (error) {
+    return console.error(error);
+  }
 }
-export async function findTopic(slug: string) {
-    try {
-        const topic = await db.topic.findFirst({ where: { slug } });
-        return topic;
-    } catch (error) {
-        return console.error(error);
-    }
+export async function findTopic(slug: string, type: string = "slug") {
+  try {
+    const topic = await db.topic.findFirst({ where: { [type]: slug } });
+    return topic;
+  } catch (error) {
+    return console.error(error);
+  }
 }
 
 export async function createPost(data: {
@@ -89,7 +87,7 @@ export async function createPost(data: {
   userId: string;
   topicId: string;
 }) {
-  let post: Post
+  let post: Post;
   try {
     post = await db.post.create({
       data: {
@@ -97,12 +95,12 @@ export async function createPost(data: {
         content: data.content,
         userId: data.userId,
         topicId: data.topicId,
-      }
-    })
+      },
+    });
   } catch (error) {
-    return console.error(error)
+    return console.error(error);
   }
-  revalidatePath(paths.topic(data.slug))
+  revalidatePath(paths.topic(data.slug));
   // Time based revalidation for Home Page
 }
 
@@ -117,16 +115,15 @@ export async function findUserName(userId: string) {
   } catch (error) {
     return console.error(error);
   }
-
 }
 export async function getAllPosts(title: string | undefined, topicId?: string) {
-  // Show top 4 posts based on most comments 
+  // Show top 4 posts based on most comments
   try {
     if (!title && !topicId) {
-    const posts = await db.post.findMany()
-    return posts;
+      const posts = await db.post.findMany();
+      return posts;
     }
-    const posts = await db.post.findMany({ where: { topicId: topicId } })
+    const posts = await db.post.findMany({ where: { topicId: topicId } });
     return posts;
   } catch (error) {
     return console.error(error);
