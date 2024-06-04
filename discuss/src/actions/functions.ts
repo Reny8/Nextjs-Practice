@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import paths from "@/path";
-import { user } from "@nextui-org/react";
 
 const createTopicSchema = z.object({
   title: z

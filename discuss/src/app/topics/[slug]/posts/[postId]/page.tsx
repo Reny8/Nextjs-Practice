@@ -1,5 +1,6 @@
 import { findPostAndComments } from "@/actions/functions";
 import CommentCreateForm from "@/components/Comment/CommentCreateForm";
+import CommentList from "@/components/Comment/CommentList";
 
 export default async function PostShowPage({
   params,
@@ -19,12 +20,7 @@ export default async function PostShowPage({
             <CommentCreateForm />
           </div>
         </div>
-        <div className="card">
-          <h1>
-            All {content.comments?.length ? content.comments?.length : null}{" "}
-            Comments
-          </h1>
-        </div>
+        <CommentList props={{ comments: content.comments }} />
       </div>
     );
   }
