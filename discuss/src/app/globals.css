@@ -59,13 +59,13 @@ li > a {
 }
 .add-comment-form .add-button {
   position: absolute;
-  bottom: 2px;
+  bottom: 0px;
   right: 2px;
   border-radius: 100%;
 }
 
-.card.spaced-items {
+.spaced-items {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
