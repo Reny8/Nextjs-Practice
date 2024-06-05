@@ -17,7 +17,9 @@ export default async function PostShowPage({
             <p>{content.post?.content || ""}</p>
           </div>
           <div>
-            <CommentCreateForm />
+            <CommentCreateForm
+              props={{ topicSlug: params.slug, postId: params.postId }}
+            />
           </div>
         </div>
         <CommentList props={{ comments: content.comments }} />

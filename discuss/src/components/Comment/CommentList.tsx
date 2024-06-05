@@ -1,3 +1,4 @@
+"use client";
 import { Comment } from "@prisma/client";
 
 export default function CommentList({

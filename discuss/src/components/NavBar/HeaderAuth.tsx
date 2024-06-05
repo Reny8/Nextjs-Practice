@@ -39,7 +39,7 @@ export default function HeaderAuth() {
           color="secondary"
           isLoading={session.status === "loading"}
         >
-          { session.status === "loading" ? "" : "Sign In"}
+          {session.status === "loading" ? "" : "Sign In"}
         </Button>
       </form>
     );

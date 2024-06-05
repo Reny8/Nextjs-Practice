@@ -103,8 +103,24 @@ export async function createPost(data: {
   // Time based revalidation for Home Page
 }
 
-export async function createComment() {
-  // TODO: Revalidate the following: View a Post Page
+export async function createComment(data: FormData) {
+  try {
+    await db.comment.create({
+      data: {
+        content: data.get("content") as string,
+        postId: data.get("postId") as string,
+        userId: data.get("userId") as string,
+      },
+    });
+  } catch (error) {
+    return console.error(error);
+  }
+  revalidatePath(
+    paths.postShow(
+      data.get("topicSlug") as string,
+      data.get("postId") as string
+    )
+  );
   // Time based revalidation for Topic Show Page, Home Page
 }
 export async function findUserName(userId: string) {
