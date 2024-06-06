@@ -10,7 +10,7 @@ export default async function TopPostDisplay({
   let posts = (await getAllPosts(title, topicId)) || [];
   async function getUserName(userId: string) {
     let response = await findUserName(userId);
-    return response || "";
+    return response?.name || "";
   }
   async function getTopicSlug(topicId: string) {
     let topic = await findTopic(topicId, "id");

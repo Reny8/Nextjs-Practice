@@ -69,3 +69,9 @@ li > a {
   flex-direction: column;
   gap: 1rem;
 }
+
+ul#comment-display > li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

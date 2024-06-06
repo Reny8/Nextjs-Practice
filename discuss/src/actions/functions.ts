@@ -126,9 +126,18 @@ export async function createComment(data: FormData) {
 export async function findUserName(userId: string) {
   try {
     const user = await db.user.findFirst({ where: { id: userId } });
-    return user?.name;
+    return {
+      name: user?.name || "Unknown",
+      image:
+        user?.image ||
+        "https://th.bing.com/th/id/OIP.uQ4DG8iPTlnHC-dBRiRHjwHaHa?rs=1&pid=ImgDetMain",
+    };
   } catch (error) {
-    return console.error(error);
+    return {
+      name: "Unknown",
+      image:
+        "https://th.bing.com/th/id/OIP.uQ4DG8iPTlnHC-dBRiRHjwHaHa?rs=1&pid=ImgDetMain",
+    };
   }
 }
 export async function getAllPosts(title: string | undefined, topicId?: string) {

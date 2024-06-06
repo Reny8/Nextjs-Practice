@@ -13,8 +13,8 @@ export default async function PostShowPage({
       <div className="page spaced-items">
         <div className="card spaced-items">
           <div>
-            <h1>{content.post?.slug || ""} </h1>
-            <p>{content.post?.content || ""}</p>
+            <h1>{content.post?.slug}</h1>
+            <p>{content.post?.content}</p>
           </div>
           <div>
             <CommentCreateForm
