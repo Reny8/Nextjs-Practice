@@ -72,6 +72,6 @@ li > a {
 
 ul#comment-display > li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }

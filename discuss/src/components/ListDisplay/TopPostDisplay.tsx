@@ -8,29 +8,21 @@ export default async function TopPostDisplay({
   topicId?: string;
 }) {
   let posts = (await getAllPosts(title, topicId)) || [];
-  async function getUserName(userId: string) {
-    let response = await findUserName(userId);
-    return response?.name || "";
-  }
-  async function getTopicSlug(topicId: string) {
-    let topic = await findTopic(topicId, "id");
-    const slug = topic?.slug;
-    return slug || "";
-  }
   return (
     <div className="col-span-3 card">
       <h1 className="text-xl m-2">{title !== undefined ? title : "Feed"}</h1>
       <ul>
-        {posts.map(async (post) => {
-          const slug = await getTopicSlug(post.topicId);
+        {posts.map((post) => {
           return (
-            <a href={paths.postShow(slug, post.id)}>
-              <li key={post.id}>
+            <a
+              href={paths.postShow(post.topic?.slug || "", post.id)}
+              key={post.id}
+            >
+              <li>
                 <h1>{post.slug}</h1>
                 <div className="post-subtitle-box">
-                  <p>By: {getUserName(post.userId)}</p>
-                  {/* NEED TO RETURN REPLACE WITH REAL AMOUNT */}
-                  <p>1 comment</p>
+                  <p>By: {post.user.name}</p>
+                  <p>{post._count.comments} comment</p>
                 </div>
               </li>
             </a>

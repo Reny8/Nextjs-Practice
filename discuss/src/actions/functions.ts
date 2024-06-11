@@ -140,20 +140,55 @@ export async function findUserName(userId: string) {
     };
   }
 }
+interface PostPayload {
+  id: string;
+  slug: string;
+  content: string;
+  topic: {
+    slug: string;
+  };
+  _count: {
+    comments: number;
+  };
+  user: {
+    name: string;
+    image: string;
+  };
+}
+
 export async function getAllPosts(title: string | undefined, topicId?: string) {
   // Show top 4 posts based on most comments
   try {
-    if (!title && !topicId) {
-      const posts = await db.post.findMany();
-      return posts;
-    }
-    const posts = await db.post.findMany({ where: { topicId: topicId } });
-    return posts;
+    const posts =
+      !title && !topicId
+        ? await db.post.findMany()
+        : await db.post.findMany({ where: { topicId: topicId } });
+    return formatPostResponse(posts, !topicId ? true : false);
   } catch (error) {
-    return console.error(error);
+    return console.log(error);
   }
 }
-
+async function formatPostResponse(posts: Post[], byTopic?: boolean) {
+  let formattedPosts: PostPayload[] = [];
+  for (let post of posts) {
+    const user = await findUserName(post.userId);
+    const commentsCount = await db.comment.count({
+      where: { postId: post.id },
+    });
+    const topicSlug = byTopic
+      ? (await findTopic(post.topicId, "id"))?.slug
+      : "";
+    formattedPosts.push({
+      id: post.id,
+      slug: post.slug,
+      content: post.content,
+      _count: { comments: commentsCount },
+      topic: { slug: topicSlug || "" },
+      user: { name: user.name, image: user.image },
+    });
+  }
+  return formattedPosts;
+}
 export async function findPostAndComments(postId: string) {
   try {
     const post = await db.post.findFirst({ where: { id: postId } });
