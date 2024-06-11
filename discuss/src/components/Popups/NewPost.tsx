@@ -24,10 +24,14 @@ export default function NewPost({ topicId }: { topicId: string }) {
     userId: session.data?.user?.id || "",
     topicId: topicId,
   });
-  // COME BACK AND WRITE CONDITIONS BELOW
-  const inValidTitle = false;
-  const inValidDescription = false;
-  const disabled = false;
+  const inValidDescription =
+    formData.content !== "" && formData.content.length < 10;
+  const inValidTitle = formData.slug !== "" && formData.slug.length < 3;
+  const disabled =
+    formData.content === "" ||
+    formData.slug === "" ||
+    inValidDescription ||
+    inValidTitle;
 
   React.useEffect(() => {
     if (isOpen) {
