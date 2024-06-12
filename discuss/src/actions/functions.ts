@@ -176,9 +176,13 @@ export async function getAllPosts(
 
 export async function findPostAndComments(postId: string) {
   try {
-    const post = await db.post.findFirst({ where: { id: postId } });
-    const comments = await db.comment.findMany({ where: { postId: postId } });
-    return { post, comments };
+    const post = await db.post.findFirst({
+      where: { id: postId },
+      include: {
+        comments: true,
+      },
+    });
+    return post;
   } catch (error) {
     return console.error(error);
   }
