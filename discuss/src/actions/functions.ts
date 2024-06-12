@@ -187,3 +187,17 @@ export async function findPostAndComments(postId: string) {
     return console.error(error);
   }
 }
+
+export async function search(query: string) {
+  try {
+    const posts = await db.post.findMany({
+      where: {
+        OR: [{ slug: { contains: query } }, { content: { contains: query } }],
+      },
+    });
+    console.log(posts);
+    return posts;
+  } catch (error) {
+    return console.error(error);
+  }
+}

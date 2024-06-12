@@ -1,7 +1,8 @@
 import "./NavBar.css";
 import Link from "next/link";
-import { Navbar, NavbarContent, Input } from "@nextui-org/react";
+import { Navbar, NavbarContent } from "@nextui-org/react";
 import HeaderAuth from "./HeaderAuth";
+import SearchInput from "./SearchInput";
 
 export default async function NavBar() {
   return (
@@ -10,7 +11,7 @@ export default async function NavBar() {
         <h1>Discuss</h1>
       </Link>
       <NavbarContent justify="center">
-        <Input type="text" placeholder="Search" className="w-96" />
+        <SearchInput />
       </NavbarContent>
       <NavbarContent justify="center">
         <HeaderAuth />
