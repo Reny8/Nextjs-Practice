@@ -1,4 +1,4 @@
-import { findTopic, findUserName, getAllPosts } from "@/actions/functions";
+import { getAllPosts } from "@/actions/functions";
 import paths from "@/path";
 export default async function TopPostDisplay({
   title,
