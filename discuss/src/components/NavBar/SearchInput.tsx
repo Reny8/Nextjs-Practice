@@ -25,6 +25,9 @@ export default function SearchInput() {
         className="w-96"
         defaultValue={searchTerm}
         onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") updateQueryParams(search);
+        }}
         endContent={
           <Button
             isIconOnly

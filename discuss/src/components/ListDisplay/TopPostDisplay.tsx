@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/actions/functions";
 import paths from "@/path";
+import CustomTitle from "../CustomTitle";
 export default async function TopPostDisplay({
   title,
   topicId,
@@ -10,7 +11,7 @@ export default async function TopPostDisplay({
   let posts = (await getAllPosts(title, topicId)) || [];
   return (
     <div className="col-span-3 card">
-      <h1 className="text-xl m-2">{title !== undefined ? title : "Feed"}</h1>
+      <CustomTitle title={title || "Feed"} />
       <ul>
         {posts.map((post) => {
           return (
