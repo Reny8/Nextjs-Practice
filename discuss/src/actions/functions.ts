@@ -140,55 +140,41 @@ export async function findUserName(userId: string) {
     };
   }
 }
-interface PostPayload {
-  id: string;
-  slug: string;
-  content: string;
-  topic: {
-    slug: string;
-  };
-  _count: {
-    comments: number;
-  };
-  user: {
-    name: string;
-    image: string;
-  };
-}
+type PostPayload = Post & {
+  topic: { slug: string };
+  user: { name: string | null; image: string | null };
+  _count: { comments: number };
+};
 
-export async function getAllPosts(title: string | undefined, topicId?: string) {
+export async function getAllPosts(
+  title: string | undefined,
+  topicId?: string
+): Promise<PostPayload[] | void> {
   // Show top 4 posts based on most comments
   try {
-    const posts =
-      !title && !topicId
-        ? await db.post.findMany()
-        : await db.post.findMany({ where: { topicId: topicId } });
-    return formatPostResponse(posts, !topicId ? true : false);
+    const baseQuery = {
+      include: {
+        topic: { select: { slug: true } },
+        user: {
+          select: { name: true, image: true },
+        },
+        _count: { select: { comments: true } },
+      },
+    };
+
+    if (!topicId && !title) {
+      return await db.post.findMany(baseQuery);
+    }
+
+    return await db.post.findMany({
+      where: { topic: { id: topicId } },
+      ...baseQuery,
+    });
   } catch (error) {
     return console.log(error);
   }
 }
-async function formatPostResponse(posts: Post[], byTopic?: boolean) {
-  let formattedPosts: PostPayload[] = [];
-  for (let post of posts) {
-    const user = await findUserName(post.userId);
-    const commentsCount = await db.comment.count({
-      where: { postId: post.id },
-    });
-    const topicSlug = byTopic
-      ? (await findTopic(post.topicId, "id"))?.slug
-      : "";
-    formattedPosts.push({
-      id: post.id,
-      slug: post.slug,
-      content: post.content,
-      _count: { comments: commentsCount },
-      topic: { slug: topicSlug || "" },
-      user: { name: user.name, image: user.image },
-    });
-  }
-  return formattedPosts;
-}
+
 export async function findPostAndComments(postId: string) {
   try {
     const post = await db.post.findFirst({ where: { id: postId } });
