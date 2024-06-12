@@ -2,7 +2,6 @@ import { findPostAndComments } from "@/actions/functions";
 import CommentCreateForm from "@/components/Comment/CommentCreateForm";
 import CommentList from "@/components/Comment/CommentList";
 import PostShow from "@/components/Post/PostShow";
-import { Suspense } from "react";
 
 export default async function PostShowPage({
   params,
@@ -27,9 +26,7 @@ export default async function PostShowPage({
             />
           </div>
         </div>
-        <Suspense fallback={<div>Loading ... </div>}>
-          <CommentList props={{ comments: content.comments }} />
-        </Suspense>
+        <CommentList props={{ comments: content.comments }} />
       </div>
     );
   }
