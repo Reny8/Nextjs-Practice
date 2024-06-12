@@ -1,6 +1,8 @@
 import { findPostAndComments } from "@/actions/functions";
 import CommentCreateForm from "@/components/Comment/CommentCreateForm";
 import CommentList from "@/components/Comment/CommentList";
+import PostShow from "@/components/Post/PostShow";
+import { Suspense } from "react";
 
 export default async function PostShowPage({
   params,
@@ -13,8 +15,11 @@ export default async function PostShowPage({
       <div className="page spaced-items">
         <div className="card spaced-items">
           <div>
-            <h1>{content.slug}</h1>
-            <p>{content.content}</p>
+            <PostShow
+              params={{
+                post: { title: content.slug, content: content.content },
+              }}
+            />
           </div>
           <div>
             <CommentCreateForm
@@ -22,7 +27,9 @@ export default async function PostShowPage({
             />
           </div>
         </div>
-        <CommentList props={{ comments: content.comments }} />
+        <Suspense fallback={<div>Loading ... </div>}>
+          <CommentList props={{ comments: content.comments }} />
+        </Suspense>
       </div>
     );
   }
