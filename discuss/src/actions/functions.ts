@@ -86,9 +86,8 @@ export async function createPost(data: {
   userId: string;
   topicId: string;
 }) {
-  let post: Post;
   try {
-    post = await db.post.create({
+    await db.post.create({
       data: {
         slug: data.slug,
         content: data.content,
