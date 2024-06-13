@@ -147,30 +147,38 @@ type PostPayload = Post & {
 
 export async function getAllPosts(
   title: string | undefined,
-  topicId?: string
-): Promise<PostPayload[] | void> {
-  // Show top 4 posts based on most comments
-  try {
-    const baseQuery = {
-      include: {
-        topic: { select: { slug: true } },
-        user: {
-          select: { name: true, image: true },
-        },
-        _count: { select: { comments: true } },
+  topicId?: string,
+  query?: string
+): Promise<PostPayload[] | []> {
+  const baseQuery = {
+    include: {
+      topic: { select: { slug: true } },
+      user: {
+        select: { name: true, image: true },
       },
-    };
-
-    if (!topicId && !title) {
+      _count: { select: { comments: true } },
+      take: 4,
+    },
+  };
+  try {
+    if (query) {
+      return await db.post.findMany({
+        where: {
+          OR: [{ content: { contains: query } }, { slug: { contains: query } }],
+        },
+        ...baseQuery,
+      });
+    } else if (!topicId && !title) {
       return await db.post.findMany(baseQuery);
+    } else {
+      return await db.post.findMany({
+        where: { topic: { id: topicId } },
+        ...baseQuery,
+      });
     }
-
-    return await db.post.findMany({
-      where: { topic: { id: topicId } },
-      ...baseQuery,
-    });
   } catch (error) {
-    return console.log(error);
+    console.log(error);
+    return [];
   }
 }
 
@@ -183,20 +191,6 @@ export async function findPostAndComments(postId: string) {
       },
     });
     return post;
-  } catch (error) {
-    return console.error(error);
-  }
-}
-
-export async function search(query: string) {
-  try {
-    const posts = await db.post.findMany({
-      where: {
-        OR: [{ slug: { contains: query } }, { content: { contains: query } }],
-      },
-    });
-    console.log(posts);
-    return posts;
   } catch (error) {
     return console.error(error);
   }
