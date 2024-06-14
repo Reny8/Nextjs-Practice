@@ -7,7 +7,7 @@ export default async function TopicDisplay() {
   const topics = await getAllTopics();
   if (!topics) return <div className="card">Add A Topic Above</div>;
   return (
-    <div className="card">
+    <div className="card flex-1">
       <h1 className="flex items-center justify-center mb-1">Topics</h1>
       <ul>
         {topics.map((item) => {

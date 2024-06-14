@@ -26,6 +26,7 @@ html {
   background-color: white;
   gap: 0.2rem;
 }
+
 .post-subtitle-box {
   display: flex;
   align-items: center;
@@ -39,10 +40,14 @@ ul {
   gap: 1rem;
 }
 
-li {
+li,
+.loader-card {
   padding: 0.8rem;
   background-color: #e6e6e6;
   border-radius: 10px;
+}
+.skeleton-text {
+  background-color: #a6a6a6 !important;
 }
 li:hover {
   opacity: 0.8;

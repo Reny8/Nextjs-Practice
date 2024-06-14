@@ -14,8 +14,8 @@ export default function SearchInput() {
     } else {
       searchParams.append("term", search);
     }
-
     window.history.pushState({}, "", "?" + searchParams.toString());
+    window.location.href = "?" + searchParams.toString();
   }
   return (
     <Suspense>

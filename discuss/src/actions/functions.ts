@@ -157,7 +157,7 @@ export async function getAllPosts(
         select: { name: true, image: true },
       },
       _count: { select: { comments: true } },
-      take: 4,
+      take: 5,
     },
   };
   try {
